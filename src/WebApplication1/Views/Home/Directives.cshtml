@@ -1,0 +1,101 @@
+@{
+    ViewData["Title"] = "Directives Page";
+}
+<h3>Angular SPA</h3>
+<div >
+    <ul>
+        <li><a href="http://docs.asp.net/en/latest/client-side/angular.html">ASP.NET reference</a></li>
+        <li>Data Binding</li>
+        <li>Templates</li>
+        <li>Expressions</li>
+        <li>Repeaters</li>
+    </ul>
+</div>
+
+<div class="row">
+
+    <div class="col-md-3" ng-init="firstName='John'; lastName='Doe';">
+        Data Binding:
+        <ul>
+            <li>
+                <strong>First name:</strong> {{firstName}} <br />
+            </li>
+            <li>
+                <strong>Last name:</strong> <span ng-bind="lastName" />
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-3" ng-init="personName='John Doe'">
+        Templates (click 'n type!):
+        <ul>
+            <li>
+                <input ng-model="personName" />
+            </li>
+            <li>
+                {{personName}}
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="col-md-3" ng-init="personName='John Doe'">
+        Expressions:
+        <ul>
+            <li>
+                Name is: {{personName}} <br />
+            </li>
+            <li>
+                Simple JavaScript calculation of 1 + 2: {{1+2}}
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-3" ng-init="names=['John Doe', 'Mary Jane', 'Bob Parker']">
+        Repeater impl w/collection:
+        <ul>
+            <li ng-repeat="name in names">
+               Name: {{name}} 
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-3" ng-init="nameArray=[
+		{firstName:'John', lastName:'Doe'},
+		{firstName:'Mary', lastName:'Jane'},
+		{firstName:'Bob', lastName:'Parker'}]">
+        Repeater impl w/2d named array:
+        <ul>
+            <li ng-repeat="name in nameArray">
+                <strong>first: </strong>{{name.firstName }} <strong>last:</strong>{{name.lastName}}
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-md-3" ng-init="nameArray2=[
+		{firstName:'John', lastName:'Doe'},
+		{firstName:'Mary', lastName:'Jane'},
+		{firstName:'Bob', lastName:'Parker'}]">
+        Collections MetaData:
+        <ul>
+            <li ng-repeat="name in nameArray2">
+                {{name.firstName + ' ' + name.lastName}} at index {{$index}}
+                <span ng-show="{{$first}}">, the first position</span>
+                <span ng-show="{{$last}}">, the last position</span>
+                <span ng-show="{{$odd}}">,which is odd-numbered.</span>
+                <span ng-show="{{$even}}">,which is even-numbered.</span>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-controller="personController">
+        <ul>
+            <li>
+                Scope uses some javascript
+            </li>
+        </ul>
+        <strong>Name:</strong> {{jsName}}
+        <br />
+        <strong>Missing Property (age):</strong> {{jsAge}}
+    </div>
+</div>
